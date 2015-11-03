@@ -16,6 +16,8 @@
 #define MAX_LENGTH 1024
 #define DELIMS " \t\r\n" // spacebar 눌렀을 때, 탭 쳤을 때, 엔터 쳤을 때
 
+#include "cash.h"
+
 int main(int argc, char *argv[]) { 
 	char *cmd; // 포인터 타입으로 cmd 변수 선언
 	char line[MAX_LENGTH];
@@ -34,14 +36,14 @@ int main(int argc, char *argv[]) {
 			        if (!arg) 
 						fprintf(stderr, "cd missing argument.\n");
 					else 
-						chdir(arg); // 디렉토리 변경 함수 cd 
-				} else if(strcmp(cmd, "mkdir") == 0){
+						changeDir(arg); // A function changes a directory. 
+				} else if(strcmp(cmd, "md") == 0){
 					char *arg = strtok(0, DELIMS);
 					
 					if(!arg)	
 						fprintf(stderr, "mkdir missing argument.\n");
 					else
-						mkdir(arg, 0777); // A function makes a directory.
+						makeDir(arg, 0777); // A function makes a directory.
 				}
 				else if (strcmp(cmd, "exit") == 0) {
 					break;
