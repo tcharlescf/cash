@@ -39,11 +39,13 @@ int main(int argc, char *argv[]) {
 					copyFile(0);
 				} else if (strcmp(cmd, "goodbye") == 0){ // Quit the shell
 					break;
-			} 
-			else system(line);
+				} else if(strcmp(cmd, "cat") == 0){
+					printContents();		
+				} 
+				else system(line);
 
-			if (errno) 
-				perror("Command failed");
+				if (errno) 
+					perror("Command failed");
 			}
 	}
 	return 0;
