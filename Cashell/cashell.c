@@ -41,7 +41,15 @@ int main(int argc, char *argv[]) {
 					break;
 				} else if(strcmp(cmd, "cat") == 0){
 					printContents();		
-				} 
+				} else if(strcmp(cmd, "path") == 0){
+					showPath();	
+				} else if(strcmp(cmd, "echo") == 0){
+					showEcho();		
+				} else if(strcmp(cmd, "server") == 0){
+					turnOnServer();	
+				} else if(strcmp(cmd, "client") == 0){
+					turnOnClient();		
+				}
 				else system(line);
 
 				if (errno) 
