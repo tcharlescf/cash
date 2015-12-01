@@ -49,7 +49,11 @@ int main(int argc, char *argv[]) {
 					turnOnServer();	
 				} else if(strcmp(cmd, "client") == 0){
 					turnOnClient();		
-				} else system(line);
+				} else if(strcmp(cmd, "ls") == 0){
+					showList();		
+				} else if(strcmp(cmd, "catch") == 0){
+					showCatch();		
+				}
 
 				if (errno) 
 					perror("Command failed");

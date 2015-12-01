@@ -6,3 +6,4 @@ void showPath();
 void showEcho();
 void turnOnServer();
 void turnOnClient();
+void showCatch();
