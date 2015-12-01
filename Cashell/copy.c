@@ -51,12 +51,6 @@ int copyFile(int argc){
 	ssize_t rcnt, tot_cnt = 0;
 	mode_t mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH;
 
-	/*
-	if(argc < 3){
-		fprintf(stderr, "Usage : file copy happened an error. \n");		
-		exit(1);
-	}*/
-
 	if((src = open(source, O_RDONLY)) == -1){
 		perror("src open.\n");		
 		exit(1);

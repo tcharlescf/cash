@@ -49,8 +49,7 @@ int main(int argc, char *argv[]) {
 					turnOnServer();	
 				} else if(strcmp(cmd, "client") == 0){
 					turnOnClient();		
-				}
-				else system(line);
+				} else system(line);
 
 				if (errno) 
 					perror("Command failed");

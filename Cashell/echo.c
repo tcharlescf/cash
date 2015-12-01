@@ -23,8 +23,9 @@ void showEcho(int argc){
 		fprintf(stderr, "There's nothing to answer\n");
 	else{
 		printf("The echo : ");
-		for(i = 0; i < strlen(arg); i++){
-			printf("%c", arg[i]);	
+		while(arg != NULL){
+			printf("%s ", arg);	
+			arg = strtok(NULL, DELIMS);
 		}
 		printf("\n");
 	}
