@@ -20,46 +20,24 @@ void matching(char *argv[]){
 
 	fp = fopen(file, "r");
 
-	while(1){
-		temp = fgetc(fp);		
-		if(temp == EOF)
-			break;
-		
-		if(temp != '\n'){
-		// Till meeting carriage return(\n)
-			line[j] = temp;
-			j++;
-		} else if(temp == '\n'){
-			line[j] = '\0';
-		// Compare the line to argv[0] that I typed as a pattern
-			if(strstr(line, pattern) != NULL)	
-				printf("-> %s\n", line);
-
-			memset(line, 0, sizeof(char));
-			j = 0;
-		}
-	}
-
-	/*
-	if((fd = open(argv[1], O_RDONLY)) != -1){ 
+	if((fd = open(file, O_RDONLY)) != -1){ 
 		while((r = read(fd, &temp, sizeof(char))) != 0){ 
 		// 0 is the end of file. -1 is an error occured
-			printf("The r value : %d\n", r);
+		//	printf("The r value : %d\n", r);
 
 			if(temp != '\n'){ 
 				line[j] = temp; 
 				j++; 
 			} else{ 
-			// Compare line to argv[0] that I typed as a pattern
-				if(strstr(line, argv[0]) != NULL) 
-					printf("%s\n", line); 
+			// Compare line to pattern that I typed as a pattern
+				if(strstr(line, pattern) != NULL) 
+					printf("-> %s\n", line); 
 
 				memset(line, 0, sizeof(line)); 
 				j=0; 
 			}
 		} 
 	}   
-	*/
 } 
 
 void showCatch(int argc){ 
