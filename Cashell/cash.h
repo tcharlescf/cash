@@ -7,3 +7,5 @@ void showEcho();
 void turnOnServer();
 void turnOnClient();
 void showCatch();
+void doRemove();
+void doPipe();

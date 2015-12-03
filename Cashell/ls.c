@@ -19,7 +19,7 @@ void die(char *msg){
 int select_file(struct direct *entry){
 	    if ((strcmp(entry->d_name, ".") == 0) || 
 			(strcmp(entry->d_name, "..") == 0))
-			        return (FALSE);
+			return (FALSE);
 		else
 			return (TRUE);
 }
@@ -36,8 +36,9 @@ void showList(){
 	if(count <= 0)
 		die("There are no files here\n");
 													      
-	printf("File's count  = %d\n",count);
+	printf("File's count  = %d\n", count);
+
 	for (i = 1; i < count + 1; ++i)
-		printf("%s  ",files[i - 1]->d_name);
+		printf("%-20s",files[i - 1]->d_name);
 	printf("\n"); /* flush buffer */
 }

@@ -67,3 +67,26 @@ void showCatch(int argc){
 		printf("\n");
 	}
 }
+
+void showCatch2(char *argv[]){ 
+	char *arg = strtok(0, DELIMS);
+	struct stat stt; 
+
+	char *tokens[2];
+	tokens[0] = argv[0];
+	tokens[1] = argv[1];
+	// This token has arguments of the content and file name
+
+	if(!arg){
+		fprintf(stderr, "Missing arguments\n");		
+	} else{
+		if(stat(tokens[1], &stt) == 0){
+			matching(tokens);
+		}
+		else{
+			perror("stat()");
+			exit(1);
+		}
+		printf("\n");
+	}
+}
