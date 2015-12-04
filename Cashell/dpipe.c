@@ -53,27 +53,42 @@ void doPipe(char *argv[], int count){
 		close(1); // Close output of the pipe
 		dup2(fd[1], 1);
 
-		if(strcmp(before_pipe[0], "ls") == 0)
-			execlp("ls", "ls", NULL);
+		if(strcmp(before_pipe[0], "ls") == 0){
+			execlp("/bin/ls", "ls", NULL);
+			// showList();
+		}
 		else
 			printf("wrong command\n");
 
+		exit(0);
 	} else{
 		close(fd[1]);
 	}
 
 	// The second command for pipe
-	pid = fork();
-	if(pid == 0){
+	if((pid = fork()) == -1){
+		perror("fork failed\n");		
+		exit(1);
+	} else if(pid == 0){
 		close(0); // Close input of the pipe
 		dup2(fd[0], 0);
-		if(strcmp(after_pipe[where + 1], "catch") == 0)
+
+		if(strcmp(after_pipe[where + 1], "catch") == 0){
+		// The command for grep and its parameters
 			execlp("grep", "grep", after_pipe[where + 2], NULL);
-		else if(strcmp(after_pipe[where + 1], "wc") == 0)
-			execlp("wc", "wc", NULL);
-		else{
+
+		} else if(strcmp(after_pipe[where + 1], "wc") == 0){
+		// The command for wc and its parameters
+			if(strcmp(after_pipe[where + 2], "-l") == 0)
+				execlp("wc", "wc", "-l", NULL);
+			else if(strcmp(after_pipe[where + 2], "-l") != 0)
+				execlp("wc", "wc", NULL);
+
+		} else{
 			printf("wrong command\n");
 		}
+
+		exit(0);
 	} else{
 		close(fd[0]);		
 	}
