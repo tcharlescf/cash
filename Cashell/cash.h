@@ -9,3 +9,4 @@ void turnOnClient();
 void showCatch();
 void doRemove();
 void doPipe();
+void doRemoveDir();

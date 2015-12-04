@@ -24,8 +24,7 @@ int main(int argc, char *argv[]) {
 	char *arg_pipe[10];
 
 	while(1) {
-		printf("cash|| ");
-		cmd = " ";
+		printf("cash# ");
 		if (!fgets(line, MAX_LENGTH, stdin)) // Type commands 
 			break;
 			
@@ -68,6 +67,9 @@ int main(int argc, char *argv[]) {
 			} else if(strcmp(cmd, "remove") == 0){
 			// To remove files
 				doRemove();		
+			} else if(strcmp(cmd, "rd") == 0){
+			// To remove directories
+				doRemoveDir(0);
 			} else if(strcmp(cmd, "pipe") == 0){
 				while(cmd != NULL){
 					cmd = strtok(NULL, DELIMS);
@@ -85,7 +87,7 @@ int main(int argc, char *argv[]) {
 					else	
 						i++;
 				}
-			}
+			} 
 			if (errno) 
 				perror("Command failed");
 		}
