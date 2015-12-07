@@ -20,7 +20,7 @@ void doPipe(char *argv[], int count){
 	i = 0;
 	while(i < count){
 		commands[i] = argv[i];		
-		printf("%s\n", commands[i]);
+	//	printf("%s\n", commands[i]);
 		i++;
 	}
 
@@ -28,18 +28,18 @@ void doPipe(char *argv[], int count){
 	for(i = 0; i < count; i++){
 		if(strcmp(commands[i], "|") == 0){
 			where = i;	
-			printf("| indes : %d\n", where);
+	//		printf("| indes : %d\n", where);
 		}	
 	}
 
 	for(i = 0; i < where; i++){
 		before_pipe[i] = commands[i];
-		printf("Before_pipe : %s    %d\n", before_pipe[i], i);
+	//	printf("Before_pipe : %s    %d\n", before_pipe[i], i);
 	}
 
 	for(i = where + 1; i < count; i++){
 		after_pipe[i] = commands[i];		
-		printf("After_pipe : %s     %d\n", after_pipe[i], i);
+	//	printf("After_pipe : %s     %d\n", after_pipe[i], i);
 	}
 
 	// Create the pipe
