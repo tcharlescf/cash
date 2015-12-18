@@ -12,3 +12,13 @@ catch : is equal to "grep"
 remove : to remove files
 rd : to remove directories
 pipe : to do pipe
+
+pipe example
+	pipe ps -x | catch bash
+	pipe ps -x | catch firefox
+	pipe ls -l | wc -l
+	pipe ls | wc
+	pipe ls | catch "something..."
+	pipe ls -l | wc
+	pipe ls -a | wc
+	pipe ls -al | wc

@@ -11,7 +11,6 @@ void doPipe(char *argv[], int count){
 	int fd[2], nbytes;
 	pid_t pid;
 	char readbuffer[80];
-
 	char *commands[count];
 	char *before_pipe[count];
 	char *after_pipe[count];
@@ -62,12 +61,18 @@ void doPipe(char *argv[], int count){
 				execlp("/bin/ls", "ls", "-al", NULL);
 			else
 				execlp("/bin/ls", "ls", NULL);
-			// showList();
-		}
-		else
-			printf("wrong command\n");
 
+		} else if(strcmp(before_pipe[0], "ps") == 0){
+			if(strcmp(before_pipe[1], "-x") == 0){
+				execlp("ps", "ps", "-x", NULL);		
+			} else{
+				execlp("ps", "ps", NULL);
+			}
+		} else{
+			printf("wrong command\n");
+		}
 		exit(0);
+
 	} else{
 		close(fd[1]);
 	}
@@ -88,14 +93,14 @@ void doPipe(char *argv[], int count){
 		// The command for wc and its parameters
 			if(strcmp(after_pipe[where + 2], "-l") == 0)
 				execlp("wc", "wc", "-l", NULL);
-			else if(strcmp(after_pipe[where + 2], "-l") != 0)
+			else
 				execlp("wc", "wc", NULL);
 
 		} else{
 			printf("wrong command\n");
 		}
-
 		exit(0);
+
 	} else{
 		close(fd[0]);		
 	}

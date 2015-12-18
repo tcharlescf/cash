@@ -90,7 +90,9 @@ int main(int argc, char *argv[]) {
 						i++;
 				}
 				i = 0;
-			} 
+			} else if(strcmp(cmd, "ps") == 0){
+				execlp("ps", "ps", NULL);		
+			}
 			if (errno) 
 				perror("Command failed");
 		}
