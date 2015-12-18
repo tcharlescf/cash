@@ -27,6 +27,8 @@ int main(int argc, char *argv[]) {
 		printf("cash# ");
 		if (!fgets(line, MAX_LENGTH, stdin)) // Type commands 
 			break;
+
+		cmd = 0;
 			
 		if ((cmd = strtok(line, DELIMS))) { // Cut the string by DELIMS
 			errno = 0; // Initialise error
@@ -87,6 +89,7 @@ int main(int argc, char *argv[]) {
 					else	
 						i++;
 				}
+				i = 0;
 			} 
 			if (errno) 
 				perror("Command failed");
